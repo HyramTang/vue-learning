@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Template</title>
+</head>
+
+<body>
+
+    <script src="/assets/js/vue.js"></script>
+
+    <h1>插值</h1>
+    <h2>文本</h2>
+    <span>Message: {{message}}</span><br>
+    <span v-once>这个将不会改变，只渲染一次: {{message}}</span>
+
+    <h2>HTML</h2>
+    <div id="app-2">
+        <p>Using mustaches: {{ rawHtml }}</p>
+        <p>Using v-html directive: <span v-html="rawHtml"></span></p>
+    </div>
+    <script>
+        var app2 = new Vue({
+            el: '#app-2',
+            data: {
+                rawHtml: '<span style="color:red">This should be red.</span>'
+            }
+        })
+    </script>
+
+    <h2>属性</h2>
+    <div id="app-3">
+        <button v-bind:disabled="isButtonDisabled">Button</button>
+    </div>
+    <script>
+        var app3 = new Vue({
+            el: '#app-3',
+            data: {
+                isButtonDisabled: true
+            }
+        })
+    </script>
+
+
+    <h2>JS 表达式</h2>
+    {{ number + 1 }}
+    <br>
+    {{ ok ? 'YES' : 'NO' }}
+    <br>
+    {{ message.split('').reverse().join('') }}
+    <br>
+    <\div v-bind:id="'list-' + id"><\/div>
+
+<h1>指令</h1>
+<h2>参数</h2>
+v-if：条件判断
+<br>
+v-for：循环
+<br>
+v-bind：设置属性
+<br>
+v-on：绑定事件
+
+<h2>动态参数</h2>
+v-bind:[attributeName]="url"
+<br>
+v-on:[eventName]="doSomething"
+
+<h2>修饰符</h2>
+v-on:submit.prevent="onSubmit"：.prevent 修饰符告诉 v-on 指令对于触发的事件调用 event.preventDefault()
+
+<h1>缩写</h1>
+<h2>v-bind 缩写</h2>
+v-bind:href="url"
+<br>
+:href="url"
+<br>
+:[key]="url"
+<h2>v-on 缩写</h2>
+v-on:click="doSomething"
+<br>
+@click="doSomething"
+<br>
+@[event]="doSomething"
+
+
+</body>
+
+</html>
