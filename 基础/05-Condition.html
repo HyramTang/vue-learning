@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Condition</title>
+    <script src="/assets/js/vue.js"></script>
+</head>
+
+<body>
+    <h1>v-if</h1>
+    <div id=app-1>
+        <h3 v-if="vueIsAwesome">Vue is awesome!</h3>
+
+        <h3 v-if="awesome">Vue is awesome!</h3>
+        <h3 v-else>Oh no 😢</h3>
+
+        <h2>在 template 元素上使用 v-if 条件渲染分组</h2>
+        <template v-if="ok">
+            <h3>Title</h3>
+            <p>Paragraph 1</p>
+            <p>Paragraph 2</p>
+        </template>
+
+        <h2>v-else</h2>
+        <div v-if="Math.random() > 0.5">
+            Now you see me
+        </div>
+        <div v-else>
+            Now you don't
+        </div>
+
+        <h2>v-else-if</h2>
+        <div v-if="type === 'A'">
+            A
+        </div>
+        <div v-else-if="type === 'B'">
+            B
+        </div>
+        <div v-else-if="type === 'C'">
+            C
+        </div>
+        <div v-else>
+            Not A/B/C
+        </div>
+
+        <h2>用 key 管理可复用的元素</h2>
+        <h3>不重新渲染 html，保留输入的值</h3>
+        <div>
+            <template v-if="loginType === 'username'">
+                <label>Username</label>
+                <input placeholder="Enter your username">
+            </template>
+            <template v-else>
+                <label>Email</label>
+                <input placeholder="Enter your email address">
+            </template>
+        </div>
+        <button @click="toggleLoginType">Toggle Login Type</button>
+
+
+        <h3>增加 Key Attribute 重新渲染 html，刷新输入的值</h3>
+        <div>
+            <template v-if="loginType1 === 'username'">
+                <label>Username</label>
+                <input placeholder="Enter your username" key="username-input">
+            </template>
+            <template v-else>
+                <label>Email</label>
+                <input placeholder="Enter your email address" key="email-input">
+            </template>
+        </div>
+        <button @click="toggleLoginType1">Toggle Login Type</button>
+    </div>
+    <script>
+        var app1 = new Vue({
+            el: '#app-1',
+            data: {
+                vueIsAwesome: true,
+                awesome: false,
+                ok: true,
+                type: 'D',
+                loginType: 'username',
+                loginType1: 'username'
+            },
+            methods: {
+                toggleLoginType: function () {
+                    this.loginType = this.loginType == 'username' ? 'email' : 'username';
+                },
+                toggleLoginType1: function () {
+                    this.loginType1 = this.loginType1 == 'username' ? 'email' : 'username';
+                }
+            }
+        })
+    </script>
+
+    <h1>v-show</h1>
+    <div id=app-2>
+        <p>v-show 只是简单地切换元素的 CSS property display</p>
+        <h3 v-show="ok">Hello!</h3>
+        <p>注意，v-show 不支持 template 元素，也不支持 v-else。</p>
+    </div>
+    <script>
+        var app2 = new Vue({
+            el: '#app-2',
+            data: {
+                ok: true
+            }
+        })
+    </script>
+
+    <h1>v-if vs v-show</h1>
+    <p>一般来说，v-if 有更高的切换开销，而 v-show 有更高的初始渲染开销。因此，如果需要非常频繁地切换，则使用 v-show 较好；如果在运行时条件很少改变，则使用 v-if 较好。</p>
+
+    <h1>v-if 与 v-for 一起使用</h1>
+    <p>
+        不推荐同时使用 v-if 和 v-for。请查阅风格指南以获取更多信息。
+        当 v-if 与 v-for 一起使用时，v-for 具有比 v-if 更高的优先级。请查阅列表渲染指南以获取详细信息。
+    </p>
+
+</body>
+
+</html>
