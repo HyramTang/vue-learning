@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>List Render</title>
+    <script src="/assets/js/vue.js"></script>
+</head>
+
+<body>
+    <h1>用 v-for 把一个数组对应为一组元素</h1>
+    <div id="app-1">
+        <h3>单个参数</h3>
+        <ul>
+            <li v-for="item in items" :key="item.message">
+                {{ item.message }}
+            </li>
+        </ul>
+
+        <h3>多个参数</h3>
+        <ul>
+            <li v-for="(item, index) in items">
+                {{ parentMessage }} - {{ index }} - {{ item.message }}
+            </li>
+        </ul>
+
+        <h3>使用 of 替代 in</h3>
+        <ul>
+            <li v-for="(item, index) of items">
+                {{ parentMessage }} - {{ index }} - {{ item.message }}
+            </li>
+        </ul>
+    </div>
+    <script>
+        var app1 = new Vue({
+            el: '#app-1',
+            data: {
+                parentMessage: 'Parent',
+                items: [
+                    { message: 'Foo' },
+                    { message: 'Bar' }
+                ]
+            }
+        })
+    </script>
+
+    <h1>在 v-for 里使用对象</h1>
+    <div id="app-2">
+        <h3>单个参数</h3>
+        <ul id="v-for-object" class="demo">
+            <li v-for="value in object">
+                {{ value }}
+            </li>
+        </ul>
+
+        <h3>多个参数</h3>
+        <div v-for="(value, name) in object">
+            {{ name }}: {{ value }}
+        </div>
+
+        <h3>三个参数，index 索引</h3>
+        <div v-for="(value, name, index) in object">
+            {{ index }}. {{ name }}: {{ value }}
+        </div>
+
+    </div>
+    <script>
+        var app2 = new Vue({
+            el: '#app-2',
+            data: {
+                object: {
+                    title: 'How to do lists in Vue',
+                    author: 'Jane Doe',
+                    publishedAt: '2016-04-10'
+                }
+            }
+        });
+    </script>
+
+    <h1>维护状态</h1>
+
+    <h1>数组更新检测</h1>
+    <h2>变更方法</h2>
+    Vue 将被侦听的数组的变更方法进行了包裹，所以它们也将会触发视图更新。这些被包裹过的方法包括：
+    <ul>
+        <li> push() </li>
+        <li> pop() </li>
+        <li> shift() </li>
+        <li> unshift() </li>
+        <li> splice() </li>
+        <li> sort() </li>
+        <li> reverse()</li>
+    </ul>
+    <h2>替换数据</h2>
+    变更方法，顾名思义，会变更调用了这些方法的原始数组。相比之下，也有非变更方法，例如 filter()、concat() 和 slice()。它们不会变更原始数组，而总是返回一个新数组。当使用非变更方法时，可以用新数组替换旧数组：
+    <ul>
+        <li>filter()</li>
+        <li>slice()</li>
+        <li>concat()</li>
+    </ul>
+
+    <h1>显示过滤/排序后的结果</h1>
+    <div id="app-3">
+        <h2>使用计算属性</h2>
+        <li v-for="n in evenNumbers">{{ n }}</li>
+        <h2>使用方法</h2>
+        <ul v-for="set in sets">
+            <li v-for="n in even(set)">{{ n }}</li>
+        </ul>
+    </div>
+    <script>
+        var app3 = new Vue({
+            el: '#app-3',
+            data: {
+                numbers: [1, 2, 3, 4, 5],
+                sets: [[1, 2, 3, 4, 5], [6, 7, 8, 9, 10]]
+            },
+            methods: {
+                even: function (numbers) {
+                    return numbers.filter(function (number) {
+                        return number % 2 === 0
+                    })
+                }
+            },
+            computed: {
+                evenNumbers: function () {
+                    return this.numbers.filter(function (number) {
+                        return number % 2 === 0
+                    })
+                }
+            }
+        })
+    </script>
+
+    <h1>在 v-for 里使用值范围</h1>
+    <h1>在 template 上使用 v-for</h1>
+    <h1>v-for 与 v-if 一同使用</h1>
+    <h1>在组件上使用 v-for</h1>
+
+
+</body>
+
+</html>
