@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>09-Component</title>
+    <script src="../assets/js/vue.js"></script>
+</head>
+
+<body>
+    <h1>组件基础</h1>
+    <h2>组件的复用</h2>
+    <div id="components-demo">
+        <button-counter></button-counter>
+        <button-counter></button-counter>
+        <button-counter></button-counter>
+    </div>
+
+    <script>
+        Vue.component('button-counter', {
+            data: function () {
+                return {
+                    count: 0
+                }
+            },
+            template: '<button v-on:click="count++">You clicked me {{ count }} times.</button>'
+        });
+        new Vue({ el: '#components-demo' })
+    </script>
+
+    <h2>通过 Prop 向子组件传递数据</h2>
+    <div id="blog-post-demo">
+        <blog-post v-for="post in posts" :key="post.id" :title="post.title"></blog-post>
+        <h2>通过 Prop 向子组件传递数据对象</h2>
+        <blog-post-2 v-for="post in posts" :key="post.id" :post="post"></blog-post-2>
+    </div>
+    <script>
+        Vue.component('blog-post', {
+            props: ['title'],
+            template: '<h3>{{ title }}</h3>'
+        });
+        Vue.component('blog-post-2', {
+            props: ['post'],
+            template: `
+    <div class="blog-post">
+      <h3>{{ post.title }}</h3>
+      <div v-html="post.content"></div>
+    </div>
+  `
+        })
+
+        new Vue({
+            el: '#blog-post-demo',
+            data: {
+                posts: [
+                    { id: 1, title: 'My journey with Vue', content: '是懂法守法sad' },
+                    { id: 2, title: 'Blogging with Vue', content: 'blogging sfsdfsdf' },
+                    { id: 3, title: 'Why Vue is so fun', content: 'vue fun fun fun' }
+                ]
+            }
+        })
+    </script>
+
+    <h2>监听子组件事件</h2>
+    <div id="blog-posts-events-demo">
+        <div :style="{ fontSize: postFontSize + 'em' }">
+            <blog-post-3 v-for="post in posts" :key="post.id" :post="post" @enlarge-text="postFontSize += $event">
+            </blog-post-3>
+        </div>
+    </div>
+    <script>
+        Vue.component('blog-post-3', {
+            props: ['post'],
+            template: `<div class="blog-post">
+      <h3>{{ post.title }}</h3>
+      <button @click="$emit('enlarge-text',0.1)">
+        Enlarge text
+      </button>
+      <div v-html="post.content"></div>
+    </div>`
+        })
+
+        new Vue({
+            el: '#blog-posts-events-demo',
+            data: {
+                postFontSize: 1,
+                posts: [
+                    { id: 1, title: 'My journey with Vue', content: '是懂法守法sad' },
+                    { id: 2, title: 'Blogging with Vue', content: 'blogging sfsdfsdf' },
+                    { id: 3, title: 'Why Vue is so fun', content: 'vue fun fun fun' }
+                ]
+            }
+        })
+    </script>
+</body>
+
+</html>
