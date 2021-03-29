@@ -1,12 +1,27 @@
 <template>
-  <div><app-server-status v-for="server in 5"></app-server-status></div>
+  <div class="container">
+    <app-header></app-header>
+    <hr />
+    <div class="row">
+      <app-servers></app-servers>
+      <app-server-details></app-server-details>
+    </div>
+    <hr />
+    <app-footer></app-footer>
+  </div>
 </template>
 
 <script>
-import ServerStatus from "./components/ServerStatus.vue";
+import FooterVue from "./components/Footer.vue";
+import HeaderVue from "./components/Header.vue";
+import ServersVue from "./components/Servers.vue";
+import ServerDetailsVue from "./components/ServerDetails.vue";
 export default {
   components: {
-    "app-server-status": ServerStatus,
+    "app-header": HeaderVue,
+    "app-footer": FooterVue,
+    "app-servers": ServersVue,
+    "app-server-details": ServerDetailsVue,
   },
 };
 </script>
