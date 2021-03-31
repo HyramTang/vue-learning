@@ -3,16 +3,19 @@
     <h3>You may view the User Details here</h3>
     <p>Many Details</p>
     <p>User Name: {{ switchName() }}</p>
-    <button @click="resetName">Reset Name</button>
+    <button @click="resetName">Reset Name by $emit event</button>
+    <br>
+    <button @click="resetFn">Reset Name by Function</button>
   </div>
 </template>
 
 <script>
 export default {
-  props: ["name"],
-  // props: {
-  //   name: String,
-  // },
+  // props: ["name"],
+  props: {
+    name: String,
+    resetFn: Function,
+  },
   // props: {
   //   name: {
   //     type: String,
