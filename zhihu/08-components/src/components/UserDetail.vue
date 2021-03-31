@@ -9,6 +9,16 @@
 <script>
 export default {
   props: ["name"],
+  // props: {
+  //   name: String,
+  // },
+  // props: {
+  //   name: {
+  //     type: String,
+  //     required: true,
+  //     default: "Hyram",
+  //   },
+  // },
   methods: {
     switchName() {
       return this.name.split("").reverse().join("");
