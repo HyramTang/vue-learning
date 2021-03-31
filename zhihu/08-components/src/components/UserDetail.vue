@@ -3,8 +3,9 @@
     <h3>You may view the User Details here</h3>
     <p>Many Details</p>
     <p>User Name: {{ switchName() }}</p>
+    <p>User Age: {{ userAge }}</p>
     <button @click="resetName">Reset Name by $emit event</button>
-    <br>
+    <br />
     <button @click="resetFn">Reset Name by Function</button>
   </div>
 </template>
@@ -15,6 +16,7 @@ export default {
   props: {
     name: String,
     resetFn: Function,
+    userAge: Number,
   },
   // props: {
   //   name: {
