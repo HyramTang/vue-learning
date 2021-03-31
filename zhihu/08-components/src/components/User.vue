@@ -2,11 +2,15 @@
   <div class="component">
     <h1>The User Component</h1>
     <p>I'm an awesome User!</p>
+    <p>Name is：{{ name }}</p>
     <button @click="changeName">Change My Name</button>
     <hr />
     <div class="row">
       <div class="col-xs-12 col-sm-6">
-        <app-user-detail :name="name"></app-user-detail>
+        <app-user-detail
+          :name="name"
+          @nameWasReseted="name = $event"
+        ></app-user-detail>
       </div>
       <div class="col-xs-12 col-sm-6">
         <app-user-edit></app-user-edit>
