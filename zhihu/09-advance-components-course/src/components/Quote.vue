@@ -1,6 +1,12 @@
 <template>
   <div>
-    <slot></slot>
+    <div class="title">
+      <slot name="title"></slot>
+    </div>
+    <hr />
+    <div class="content">
+      <slot></slot>
+    </div>
   </div>
 </template>
 
@@ -15,5 +21,9 @@ div {
   padding: 30px;
   margin: 30px auto;
   text-align: center;
+}
+
+h2 {
+  color: red;
 }
 </style>
