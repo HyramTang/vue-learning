@@ -10,17 +10,22 @@
           >
             Quote
           </button>
-          <button class="btn btn-primary" @click="selectedComponent = 'appAuthor'">
+          <button
+            class="btn btn-primary"
+            @click="selectedComponent = 'appAuthor'"
+          >
             Author
           </button>
           <button class="btn btn-info" @click="selectedComponent = 'appNew'">
             New
           </button>
-          <hr>
-          <component :is="selectedComponent">
-            <h2 slot="title">{{ quoteTitle }}</h2>
-            <p>A wonderful Quote</p>
-          </component>
+          <hr />
+          <keep-alive>
+            <component :is="selectedComponent">
+              <h2 slot="title">{{ quoteTitle }}</h2>
+              <p>A wonderful Quote</p>
+            </component>
+          </keep-alive>
           <!-- <app-quote>
             <h2 slot="title">{{ quoteTitle }}</h2>
             <p>A wonderful Quote</p>

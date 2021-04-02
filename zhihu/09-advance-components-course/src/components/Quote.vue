@@ -7,11 +7,19 @@
     <div class="content">
       <slot></slot>
     </div>
+    <button @click="count++">Add</button>
+    <p>count：{{ count }}</p>
   </div>
 </template>
 
 <script>
-export default {};
+export default {
+  data() {
+    return {
+      count: 0,
+    };
+  },
+};
 </script>
 
 <style scoped>
