@@ -19,6 +19,16 @@ export default {
       count: 0,
     };
   },
+  destroyed() {
+    // 在没有保留状态（keep-alive）会触发销毁
+    console.log("Destroyed！");
+  },
+  deactivated() {
+    console.log("Deactivated！");
+  },
+  activated() {
+    console.log("Activated！");
+  },
 };
 </script>
 
