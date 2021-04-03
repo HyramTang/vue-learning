@@ -13,7 +13,7 @@
         <button
           class="btn btn-primary"
           type="button"
-          @click="newQuoteFn(content)"
+          @click="newQuote"
         >
           Add Quote
         </button>
@@ -31,6 +31,12 @@ export default {
     return {
       content: "",
     };
+  },
+  methods: {
+    newQuote() {
+      this.$emit("newQuoteAdded", this.content);
+      this.content = "";
+    },
   },
 };
 </script>

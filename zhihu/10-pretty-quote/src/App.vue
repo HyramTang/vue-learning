@@ -5,7 +5,7 @@
         :quoteCount="quotes.length"
         :quoteMax="maxQuotes"
       ></app-header>
-      <app-new-quote :newQuoteFn="newQuote"></app-new-quote>
+      <app-new-quote @newQuoteAdded="newQuote"></app-new-quote>
       <app-quote-grid :quotes="quotes"></app-quote-grid>
       <div class="alert alert-info">Info: Click on a Quote to delete it!</div>
     </div>
@@ -33,12 +33,11 @@ export default {
   },
   methods: {
     newQuote(content) {
-      if (this.quotes.length < 10) {
-        this.quotes.push(content);
-      } else {
-        alert("Please delete Quotes first!");
+      if (this.quotes.length > this.maxQuotes) {
+        return alert("Please delete Quotes first!");
       }
-    }
+      this.quotes.push(content);
+    },
   },
   created() {
     eventBus.$on("quoteWasDeleted", (index) => {
