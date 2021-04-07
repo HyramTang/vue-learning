@@ -3,7 +3,7 @@ import App from './App.vue'
 
 Vue.config.productionTip = false
 
-Vue.filter('to-lowercase', (value) => {
+Vue.filter('toLowercase', (value) => {
   return value.toLowerCase();
 })
 
