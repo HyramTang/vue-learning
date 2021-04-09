@@ -4,19 +4,33 @@
       <div class="col-xs-12 col-sm-offset-2 col-md-6 col-md-offset-3">
         <H1>Animations</H1>
         <hr />
+        <select class="form-control" v-model="alertAnimation">
+          <option value="fade">Fade</option>
+          <option value="slide">Slide</option>
+        </select>
+        <br />
         <button class="btn btn-success" @click="show = !show">
           Show Alert
         </button>
         <br />
         <br />
-        <transition appear name="fade">
+        <transition :name="alertAnimation" appear>
           <div class="alert alert-info" v-if="show">This is some info</div>
         </transition>
-        <transition appear name="slider" type="animation">
+        <transition name="slide" type="animation" appear>
           <div class="alert alert-info" v-if="show">This is some info</div>
         </transition>
-        <transition appear name="fade">
+        <transition name="fade" appear>
           <div class="alert alert-info" v-if="show">This is some info</div>
+        </transition>
+        <transition
+          appear
+          enter-active-class="animate__animated animate__bounce"
+          leave-active-class="animate__animated animate__shakeX"
+        >
+          <div class="alert alert-info animate__animated" v-if="show">
+            This is some info
+          </div>
         </transition>
       </div>
     </div>
@@ -28,6 +42,7 @@ export default {
   data() {
     return {
       show: true,
+      alertAnimation: "fade",
     };
   },
 };
@@ -51,22 +66,22 @@ export default {
   opacity: 0;
 }
 
-.slider-enter {
+.slide-enter {
   opacity: 0;
   /* transform: translateY(20px); */
 }
 
-.slider-enter-active {
+.slide-enter-active {
   animation: slide-in 1s ease-out forwards;
   transition: opacity 0.5s;
 }
 
-.slider-leave {
+.slide-leave {
 }
 
-.slider-leave-to {
+.slide-leave-to {
   animation: slide-out 1s ease-out forwards;
-  transition: opacity 3s;
+  transition: opacity 1s;
   opacity: 0;
 }
 
