@@ -62,19 +62,42 @@
             v-if="load"
           ></div>
         </transition>
+        <hr />
+        <button
+          class="btn btn-primary"
+          @click="
+            selectedComponent == 'appSuccess'
+              ? (selectedComponent = 'appDanger')
+              : (selectedComponent = 'appSuccess')
+          "
+        >
+          Toggle Components
+        </button>
+        <br /><br />
+        <transition name="fade">
+          <component :is="selectedComponent"></component>
+        </transition>
       </div>
     </div>
   </div>
 </template>
 
 <script>
+import DangerVue from "./components/Danger";
+import SuccessVue from "./components/Success";
+
 export default {
+  components: {
+    appDanger: DangerVue,
+    appSuccess: SuccessVue,
+  },
   data() {
     return {
       show: true,
       alertAnimation: "fade",
       load: true,
       elementWidth: 100,
+      selectedComponent: "appSuccess",
     };
   },
   methods: {
