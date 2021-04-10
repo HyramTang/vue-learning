@@ -13,11 +13,18 @@
         <div
           class="col-xs-12 col-sm-8 col-sm-offset-2 col-md-6 col-md-offset-3"
         >
-          <component
-            :is="mode"
-            @answered="answered($event)"
-            @confirmed="mode = 'app-question'"
-          ></component>
+          <!-- <transition
+            mode="out-in"
+            enter-active-class="animate__animated animate__flipInY"
+            leave-active-class="animate__animated animate__flipOutY"
+          > -->
+            <transition name="flip" mode="out-in">
+            <component
+              :is="mode"
+              @answered="answered($event)"
+              @confirmed="mode = 'app-question'"
+            ></component
+          ></transition>
         </div>
       </div>
     </div>
@@ -50,4 +57,36 @@ export default {
   },
 };
 </script>
+<style scoped>
+.flip-enter {
+  /* transform: rotateY(0dge); */
+}
+.flip-enter-active {
+  animation: flip-in 0.5s ease-out forwards;
+}
+.flip-leave {
+  /* transform: rotateY(0dge); */
+}
+.flip-leave-active {
+  animation: flip-out 0.5s ease-out forwards;
+}
+
+@keyframes flip-out {
+  from {
+    transform: rotateY(0deg);
+  }
+  to {
+    transform: rotateY(90deg);
+  }
+}
+
+@keyframes flip-in {
+  from {
+    transform: rotateY(0deg);
+  }
+  to {
+    transform: rotateY(0deg);
+  }
+}
+</style>
 
