@@ -14,9 +14,8 @@
 </template>
 
 <script>
-import HeaderVue from "./components/Header.vue";
+import HeaderVue from './components/Header.vue';
 export default {
-  data() {},
   components: {
     appHeader: HeaderVue,
   },
