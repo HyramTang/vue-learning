@@ -5,18 +5,8 @@
     <router-link
       tag="button"
       class="btn btn-primary"
-      :to="'/user/' + $route.params.id + '/edit'"
+      :to="{ name: 'UserEdit', params: { id: $route.params.id } }"
       >Edit User</router-link
     >
   </div>
 </template>
-
-<script>
-export default {
-  data() {
-    return {
-      id: this.$route.params.id,
-    };
-  },
-};
-</script>
