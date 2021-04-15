@@ -47,6 +47,15 @@ const routes = [
       },
     ],
   },
+  {
+    path: '/redirect-me',
+    redirect: { name: 'Home' }
+  },
+  {
+    path: '*',
+    component: () =>
+      import(/* webpackChunkName: "404" */ "../components/404.vue")
+  }
 ];
 
 const router = new VueRouter({
