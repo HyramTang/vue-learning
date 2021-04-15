@@ -1,13 +1,7 @@
 <template>
-  <h3>Edit the {{ id }} User</h3>
+  <div>
+    <h3>Edit the {{ $route.params.id }} User</h3>
+    <p>Locale：{{ $route.query.locale }}</p>
+    <p>Analytics：{{ $route.query.q }}</p>
+  </div>
 </template>
-
-<script>
-export default {
-  data() {
-    return {
-      id: this.$route.params.id,
-    };
-  },
-};
-</script>
