@@ -6,6 +6,7 @@ import User from '../components/user/User.vue';
 import UserStart from '../components/user/UserStart.vue';
 import UserDetail from '../components/user/UserDetail.vue';
 import UserEdit from '../components/user/UserEdit.vue';
+/*eslint-disable*/
 
 Vue.use(VueRouter);
 
@@ -39,6 +40,10 @@ const routes = [
       {
         path: ':id',
         component: UserDetail,
+        beforeEnter: (to, from, next) => {
+          console.log('inside route setup');
+          next();
+        }
       },
       {
         path: ':id/edit',
@@ -59,7 +64,7 @@ const routes = [
 ];
 
 const router = new VueRouter({
-  routes, // eslint-disable-next-line
+  routes,
   scrollBehavior(to, from, savePosition) {
     if (savePosition) {
       return savePosition;
@@ -69,6 +74,11 @@ const router = new VueRouter({
     }
     return { x: 0, y: 0 };
   },
+});
+
+router.beforeEach((to, from, next) => {
+  console.log('Global beforeEach');
+  next();
 });
 
 export default router;

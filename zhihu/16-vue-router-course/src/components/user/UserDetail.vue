@@ -24,5 +24,15 @@ export default {
       },
     };
   },
+  // eslint-disable-next-line
+  beforeRouteEnter(to, from, next) {
+    if (!to.hash) {
+      next((vm) => {
+        console.log(vm.link);
+      });
+    } else {
+      next(false);
+    }
+  },
 };
 </script>
