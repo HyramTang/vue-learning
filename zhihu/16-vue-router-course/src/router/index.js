@@ -2,7 +2,6 @@ import Vue from 'vue';
 import VueRouter from 'vue-router';
 import Home from '../components/Home.vue';
 import Header from '../components/Header.vue';
-import User from '../components/user/User.vue';
 import UserStart from '../components/user/UserStart.vue';
 import UserDetail from '../components/user/UserDetail.vue';
 import UserEdit from '../components/user/UserEdit.vue';
@@ -27,11 +26,10 @@ const routes = [
     // which is lazy-loaded when the route is visited.
     // component: User,
     components: {
-      default: User,
+      //这里会预加载：Prefetch
+      default: () => import(/* webpackChunkName: "user" */ "../components/user/User.vue"),
       'header-bottom': Header,
     },
-    // () =>
-    //   import(/* webpackChunkName: "user" */ "../components/user/User.vue")
     children: [
       {
         path: '',
