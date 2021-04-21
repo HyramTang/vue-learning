@@ -9,11 +9,13 @@
 export default {
   methods: {
     increment() {
-      this.$store.state.counter++;
+      this.$store.commit('increment');
+      // this.$store.state.counter++;
       //   this.$emit('updated', 1);
     },
     decrement() {
-      this.$store.state.counter--;
+      this.$store.commit('decrement');
+      // this.$store.state.counter--;
     },
   },
 };
