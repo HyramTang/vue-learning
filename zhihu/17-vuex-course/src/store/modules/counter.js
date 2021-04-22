@@ -4,19 +4,19 @@ const state = {
 
 const getters = {
   doubleCounter: (state) => {
-    return state.counter * 2;
+    return state.count * 2;
   },
   stringCounter: (state) => {
-    return state.counter + ' Clicks';
+    return state.count + ' Clicks';
   },
 };
 
 const mutations = {
   increment: (state, payload) => {
-    state.counter += payload;
+    state.count += payload;
   },
   decrement: (state, payload) => {
-    state.counter -= payload;
+    state.count -= payload;
   },
 };
 
@@ -40,6 +40,7 @@ const actions = {
 };
 
 export default {
+  namespaced: true,
   state,
   mutations,
   actions,

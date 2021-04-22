@@ -15,7 +15,17 @@ export default {
     // clickCounter() {
     //   return this.$store.getters.stringCounter;
     // },
-    ...mapGetters(['doubleCounter', 'stringCounter']),
+    ...mapGetters({
+      doubleCounter: 'counter/doubleCounter',
+      stringCounter: 'counter/stringCounter',
+    }),
+
+    // doubleCounter() {
+    //   return this.$store.getters.doubleCounter;
+    // },
+    // stringCounter() {
+    //   return this.$store.getters.stringCounter;
+    // },
   },
 };
 </script>

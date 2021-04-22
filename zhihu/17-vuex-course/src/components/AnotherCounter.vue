@@ -19,7 +19,11 @@
 import { mapActions } from 'vuex';
 export default {
   methods: {
-    ...mapActions(['asyncIncrement', 'asyncDecrement']),
+    ...mapActions({
+      asyncIncrement: 'counter/asyncIncrement',
+      asyncDecrement: 'counter/asyncDecrement',
+    }),
+    // ...mapActions(['counter/asyncIncrement', 'counter/asyncDecrement']),
     // increment() {
     //   this.$store.commit('increment');
     //   // this.$store.state.counter++;
