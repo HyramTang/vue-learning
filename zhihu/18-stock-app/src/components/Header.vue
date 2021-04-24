@@ -23,32 +23,22 @@
 
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-6">
           <ul class="nav navbar-nav">
-            <router-link
-              tag="li"
-              active-class="active"
-              to="/portfolio"
-              exact="true"
+            <router-link tag="li" active-class="active" to="/portfolio" exact
               ><a>Portfolio</a></router-link
             >
-            <router-link
-              tag="li"
-              active-class="active"
-              to="/stocks"
-              exact="true"
+            <router-link tag="li" active-class="active" to="/stocks" exact
               ><a>Stocks</a></router-link
             >
           </ul>
 
           <ul class="nav navbar-nav navbar-right">
             <li><a href="#">End Day</a></li>
-            <li class="dropdown">
-              <a
-                href="#"
-                class="dropdown-toggle"
-                data-toggle="dropdown"
-                role="button"
-                aria-haspopup="true"
-                aria-expanded="false"
+            <li
+              class="dropdown"
+              :class="active ? 'active open' : ''"
+              @click="active = !active"
+            >
+              <a href="#" class="dropdown-toggle"
                 >Save & Load <span class="caret"></span
               ></a>
               <ul class="dropdown-menu">
@@ -56,7 +46,7 @@
                 <li><a href="#">Load Data</a></li>
               </ul>
             </li>
-            <li><a href="#">Funds: $10000</a></li>
+            <li><label class="navbar-text">Funds: $10000</label></li>
           </ul>
         </div>
         <!-- /.navbar-collapse -->
@@ -66,5 +56,15 @@
 </template>
 
 <script>
-export default {};
+export default {
+  data() {
+    return {
+      active: false,
+    };
+  },
+  methods: {
+    saveData() {},
+    loadData() {},
+  },
+};
 </script>
