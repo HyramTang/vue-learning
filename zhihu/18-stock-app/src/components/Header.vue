@@ -2,7 +2,7 @@
   <div>
     <nav class="navbar navbar-default navbar-fixed-top">
       <!-- We use the fluid option here to avoid overriding the fixed width of a normal container within the narrow content columns. -->
-      <div class="container-fluid">
+      <div class="container">
         <div class="navbar-header">
           <button
             type="button"
@@ -16,13 +16,27 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="#">Stock Trader</a>
+          <router-link to="/" tag="a" class="navbar-brand"
+            >Stock Trader</router-link
+          >
         </div>
 
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-6">
           <ul class="nav navbar-nav">
-            <li><a href="#">Portfolio</a></li>
-            <li><a href="#">Stocks</a></li>
+            <router-link
+              tag="li"
+              active-class="active"
+              to="/portfolio"
+              exact="true"
+              ><a>Portfolio</a></router-link
+            >
+            <router-link
+              tag="li"
+              active-class="active"
+              to="/stocks"
+              exact="true"
+              ><a>Stocks</a></router-link
+            >
           </ul>
 
           <ul class="nav navbar-nav navbar-right">

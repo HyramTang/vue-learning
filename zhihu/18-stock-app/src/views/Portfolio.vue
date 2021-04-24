@@ -1,6 +1,6 @@
 <template>
-  <div>
-    <h1>Stock Page</h1>
+  <div class="row">
+    <h1>Portfolio Page</h1>
   </div>
 </template>
 
