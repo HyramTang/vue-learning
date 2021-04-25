@@ -42,8 +42,8 @@
                 >保存&加载 <span class="caret"></span
               ></a>
               <ul class="dropdown-menu">
-                <li><a href="#">保存数据</a></li>
-                <li><a href="#">加载数据</a></li>
+                <li><a href="#" @click="saveData">保存数据</a></li>
+                <li><a href="#" @click="loadData">加载数据</a></li>
               </ul>
             </li>
             <li>
@@ -79,8 +79,12 @@ export default {
       this.$store.dispatch('stocks/randomizeStocks');
       alert('👋结束了交易日，股票单价发生了变化🎢');
     },
-    saveData() {},
-    loadData() {},
+    saveData() {
+      this.$store.dispatch('saveData');
+    },
+    loadData() {
+      this.$store.dispatch('loadData');
+    },
   },
 };
 </script>

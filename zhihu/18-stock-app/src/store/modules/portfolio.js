@@ -1,3 +1,4 @@
+/* eslint-disable */
 const state = {
   funds: 10000,
   stocks: [],
@@ -5,7 +6,6 @@ const state = {
 
 const getters = {
   stockPortfolio(state, getters, rootState, rootGetters) {
-    /* disabed eslint */
     return state.stocks.map((stock) => {
       const record = rootGetters['stocks/stocks'].find(
         (element) => element.name == stock.name,
