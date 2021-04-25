@@ -6,7 +6,7 @@
         <h6>你可以保存&加载你的数据</h6>
         <h6>点击结束交易日开始新的一天</h6>
         <hr />
-        <p>你的余额: {{ funds }}</p>
+        <p>你的余额: {{ funds | currency }}</p>
       </div>
     </div>
   </div>
@@ -16,12 +16,7 @@
 export default {
   computed: {
     funds() {
-      var funds = new Intl.NumberFormat('en-US', {
-        style: 'currency',
-        currency: 'USD',
-        minimumFractionDigits: 0,
-      }).format(this.$store.getters['portfolio/funds']);
-      return funds;
+      return this.$store.getters['portfolio/funds'];
     },
   },
 };

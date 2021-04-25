@@ -47,7 +47,7 @@
               </ul>
             </li>
             <li>
-              <label class="navbar-text">余额: {{ funds }}</label>
+              <label class="navbar-text">余额: {{ funds | currency }}</label>
             </li>
           </ul>
         </div>
@@ -66,12 +66,7 @@ export default {
   },
   computed: {
     funds() {
-      var funds = new Intl.NumberFormat('en-US', {
-        style: 'currency',
-        currency: 'USD',
-        minimumFractionDigits: 0,
-      }).format(this.$store.getters['portfolio/funds']);
-      return funds;
+      return this.$store.getters['portfolio/funds'];
     },
   },
   methods: {
