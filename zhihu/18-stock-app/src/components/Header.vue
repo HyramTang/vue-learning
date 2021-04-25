@@ -17,36 +17,38 @@
             <span class="icon-bar"></span>
           </button>
           <router-link to="/" tag="a" class="navbar-brand"
-            >Stock Trader</router-link
+            >Hyram's 股票交易所</router-link
           >
         </div>
 
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-6">
           <ul class="nav navbar-nav">
             <router-link tag="li" active-class="active" to="/portfolio" exact
-              ><a>Portfolio</a></router-link
+              ><a>持有股票</a></router-link
             >
             <router-link tag="li" active-class="active" to="/stocks" exact
-              ><a>Stocks</a></router-link
+              ><a>购买股票</a></router-link
             >
           </ul>
 
           <ul class="nav navbar-nav navbar-right">
-            <li><a href="#">End Day</a></li>
+            <li><a href="#" @click="endDay">结束交易日</a></li>
             <li
               class="dropdown"
               :class="active ? 'active open' : ''"
               @click="active = !active"
             >
               <a href="#" class="dropdown-toggle"
-                >Save & Load <span class="caret"></span
+                >保存&加载 <span class="caret"></span
               ></a>
               <ul class="dropdown-menu">
-                <li><a href="#">Save Data</a></li>
-                <li><a href="#">Load Data</a></li>
+                <li><a href="#">保存数据</a></li>
+                <li><a href="#">加载数据</a></li>
               </ul>
             </li>
-            <li><label class="navbar-text">Funds: $10000</label></li>
+            <li>
+              <label class="navbar-text">余额: {{ funds }}</label>
+            </li>
           </ul>
         </div>
         <!-- /.navbar-collapse -->
@@ -62,7 +64,21 @@ export default {
       active: false,
     };
   },
+  computed: {
+    funds() {
+      var funds = new Intl.NumberFormat('en-US', {
+        style: 'currency',
+        currency: 'USD',
+        minimumFractionDigits: 0,
+      }).format(this.$store.getters['portfolio/funds']);
+      return funds;
+    },
+  },
   methods: {
+    endDay() {
+      this.$store.dispatch('stocks/randomizeStocks');
+      alert('👋结束了交易日，股票单价发生了变化🎢');
+    },
     saveData() {},
     loadData() {},
   },

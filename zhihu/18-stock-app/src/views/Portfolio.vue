@@ -16,31 +16,36 @@ export default {
   components: {
     appStock: StockVue,
   },
-  data() {
-    return {
-      stocks: [
-        {
-          name: 'Amazon',
-          price: 10,
-          quantity: 100,
-        },
-        {
-          name: 'Google',
-          price: 10,
-          quantity: 100,
-        },
-        {
-          name: 'Apple',
-          price: 10,
-          quantity: 100,
-        },
-        {
-          name: 'Microsoft',
-          price: 10,
-          quantity: 100,
-        },
-      ],
-    };
+  // data() {
+  //   return {
+  //     stocks: [
+  //       {
+  //         name: 'Amazon',
+  //         price: 10,
+  //         quantity: 100,
+  //       },
+  //       {
+  //         name: 'Google',
+  //         price: 10,
+  //         quantity: 100,
+  //       },
+  //       {
+  //         name: 'Apple',
+  //         price: 10,
+  //         quantity: 100,
+  //       },
+  //       {
+  //         name: 'Microsoft',
+  //         price: 10,
+  //         quantity: 100,
+  //       },
+  //     ],
+  //   };
+  // },
+  computed: {
+    stocks() {
+      return this.$store.getters['portfolio/stockPortfolio'];
+    },
   },
 };
 </script>

@@ -15,27 +15,15 @@ export default {
   components: {
     appStock: StockVue,
   },
-  data() {
-    return {
-      stocks: [
-        {
-          name: 'Amazon',
-          price: 10,
-        },
-        {
-          name: 'Google',
-          price: 10,
-        },
-        {
-          name: 'Apple',
-          price: 10,
-        },
-        {
-          name: 'Microsoft',
-          price: 10,
-        },
-      ],
-    };
+  // data() {
+  //   return {
+  //     stocks: this.$store.getters['stocks/stocks']
+  //   };
+  // },
+  computed: {
+    stocks() {
+      return this.$store.getters['stocks/stocks'];
+    },
   },
 };
 </script>
