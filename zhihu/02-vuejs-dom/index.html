@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>VueJS & DOM</title>
+  </head>
+  <body>
+    <div id="app">
+      <button @click="increase(2,$event)">Add</button>
+      <p>Count：{{count}}</p>
+      <p @mousemove="updateCoordinates">坐标：{{x}} / {{y}}</p>
+      <input type="text" v-on:keyup.enter.space="alert" />
+    </div>
+    <script src="../../assets/js/vue.js"></script>
+    <script>
+      new Vue({
+        el: '#app',
+        data: {
+          count: 0,
+          x: 0,
+          y: 0,
+        },
+
+        methods: {
+          increase(num, event) {
+            this.count += num;
+            console.log(event);
+          },
+          updateCoordinates(event) {
+            this.x = event.clientX;
+            this.y = event.clientY;
+          },
+          alert() {
+            alert('warning');
+          },
+        },
+      });
+    </script>
+  </body>
+</html>
